@@ -6,16 +6,18 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * MyBatis entity (view: v_user_authority).
+ * MyBatis entity (table: m_user_role).
  */
 @Data
 @Accessors(chain = true)
-public class VUserAuthority implements Serializable {
+public class MUserRole implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String userId;
 
-	private String authorityName;
+	private String roleId;
+
+	private String description;
 
 }

@@ -29,6 +29,12 @@ public class AppConstants {
 			+ "not @target(org.springframework.transaction.annotation.Transactional)";
 	// @formatter:on
 
+	/** security : role id - administrator role. */
+	public static final String ROLE_ID_FOR_ADMIN = "0001";
+
+	/** security : role id - public role. */
+	public static final String ROLE_ID_FOR_USERS = "0002";
+
 	/** security : URI to permit for all users. */
 	public static final List<String> URI_PERMIT_ALL;
 	static {
@@ -36,6 +42,7 @@ public class AppConstants {
 		list.add("/");
 		list.add("/login");
 		list.add("/logout");
+		list.add("/user/regist");
 		URI_PERMIT_ALL = Collections.unmodifiableList(list);
 	};
 
@@ -51,6 +58,8 @@ public class AppConstants {
 	public static final List<String> URI_ADMIN_PAGE;
 	static {
 		List<String> list = new ArrayList<String>();
+		list.add("/user/list");
+		list.add("/user/delete/*");
 		URI_ADMIN_PAGE = Collections.unmodifiableList(list);
 	};
 

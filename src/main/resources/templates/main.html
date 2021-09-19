@@ -13,6 +13,14 @@
   <!-- header -->
   <nav th:replace="fragment.html::header"></nav>
 
+  <div class="app-flex-container-lg">
+    <!-- sidebar -->
+    <nav th:replace="fragment.html::sidebar"></nav>
+    <!-- main -->
+    <main class="app-main-contents">
+    </main>
+  </div>
+
   <!-- javascript -->
   <div th:replace="fragment.html::javascripts">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

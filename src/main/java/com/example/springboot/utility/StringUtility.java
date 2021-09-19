@@ -14,6 +14,15 @@ public class StringUtility {
 	}
 
 	/**
+	 * Checks if a CharSequence is empty ("") or null.
+	 * @param str String
+	 * @return true if the CharSequence is empty or null
+	 */
+	public static boolean isEmpty(String str) {
+		return (str == null || str.length() == 0 ? true : false);
+	}
+
+	/**
 	 * Convert a string list to a string array.
 	 * @param list string list
 	 * @return string array

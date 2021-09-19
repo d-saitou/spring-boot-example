@@ -5,11 +5,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * MyBatis entity (table: m_user).
  */
 @Data
+@Accessors(chain = true)
 public class MUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -36,7 +38,7 @@ public class MUser implements Serializable {
 
 	private String creditCardNo;
 
-	private LocalDate creditExpirationDate;
+	private LocalDate creditCardExpirationDate;
 
 	private String passwordHint;
 

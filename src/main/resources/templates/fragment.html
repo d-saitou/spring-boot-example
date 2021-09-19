@@ -40,6 +40,19 @@
       </ul>
     </div>
   </nav>
+  <div class="app-flex-container-lg">
+    <!--
+     -- side menu
+     --->
+    <nav th:fragment="sidebar" class="navbar navbar-expand-lg app-sidebar" id="sidebarContents">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav app-sidebar-menu">
+          <li class="nav-item" sec:authorize="principal.username == 'admin'">
+            <a class="nav-link active" th:href="@{/user/list}" href="#" th:text="#{UserList.title}">side menu link</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   <!-- JavaScript-->
   <div th:fragment="javascripts">
     <script th:src="@{/webjars/jquery/jquery.min.js}" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
