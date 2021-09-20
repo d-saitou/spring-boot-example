@@ -51,6 +51,7 @@ public class AppConstants {
 	static {
 		List<String> list = new ArrayList<String>();
 		list.add("/main");
+		list.add("/async/mail");
 		URI_USERS_PAGE = Collections.unmodifiableList(list);
 	};
 
