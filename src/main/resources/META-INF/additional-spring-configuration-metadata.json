@@ -1,0 +1,19 @@
+{
+  "properties": [
+      {
+          "name": "application.logging.mail.to-address",
+          "type": "java.lang.String",
+          "description": "E-mail address to send e-mail when an exception occurs."
+      },
+      {
+          "name": "application.logging.mail.from-address",
+          "type": "java.lang.String",
+          "description": "Email address of the sender of the email when an exception occurs."
+      },
+      {
+          "name": "application.logging.mail.subject",
+          "type": "java.lang.String",
+          "description": "Subject of email when exception occurs."
+      }
+  ]
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<!-- configuration file for LogBack (slf4J implementation) -->
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+
+  <!-- include default configuration for spring boot. -->
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+
+  <!-- load the properties of application.properties. -->
+	<property resource="application.properties" />
+
+  <!-- custom appender to send an email when an error occurs. -->
+	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<smtpHost>${spring.mail.host}</smtpHost>
+		<smtpPort>${spring.mail.port}</smtpPort>
+		<!-- <SSL>${javax.mail.SSL}</SSL> * yahoo mail -->
+		<!-- <STARTTLS>${javax.mail.startTLS}</STARTTLS> * gmail -->
+		<username>${spring.mail.username}</username>
+		<password>${spring.mail.password}</password>
+		<to>${application.logging.mail.to-address}</to>
+		<from>${application.logging.mail.from-address}</from>
+		<subject>${application.logging.mail.subject}</subject>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n</pattern>
+		</layout>
+		<asynchronousSending>true</asynchronousSending>
+	</appender>
+
+	<root>
+		<appender-ref ref="CONSOLE"/> <!-- default appender -->
+		<appender-ref ref="FILE"/>    <!-- default appender -->
+		<appender-ref ref="EMAIL"/>   <!-- custom appender -->
+	</root>
+
+</configuration>
