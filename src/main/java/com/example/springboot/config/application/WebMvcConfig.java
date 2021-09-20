@@ -1,9 +1,14 @@
 package com.example.springboot.config.application;
 
+import com.example.springboot.config.async.CustomCallableProcessingInterceptor;
+import com.example.springboot.config.async.CustomDeferredResultProcessingInterceptor;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,6 +22,8 @@ import lombok.RequiredArgsConstructor;
 public class WebMvcConfig implements WebMvcConfigurer {
 
 	private final MessageSource messageSource;
+
+	private final AsyncTaskExecutor taskExecutor;
 
 	/**
 	 * Configure validator (JSR-303 Bean Validation) and register as bean.
@@ -37,6 +44,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("index");
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/main").setViewName("main");
+	}
+
+	/**
+	 * Configure asynchronous request handling options.
+	 * @see WebMvcConfigurer#configureAsyncSupport(AsyncSupportConfigurer)
+	 */
+	@Override
+	public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+		configurer.setTaskExecutor(taskExecutor);
+		configurer.setDefaultTimeout(60000);
+		configurer.registerCallableInterceptors(new CustomCallableProcessingInterceptor());
+		configurer.registerDeferredResultInterceptors(new CustomDeferredResultProcessingInterceptor());
 	}
 
 }
