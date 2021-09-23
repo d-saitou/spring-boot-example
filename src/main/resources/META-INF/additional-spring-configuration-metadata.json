@@ -1,6 +1,11 @@
 {
   "properties": [
       {
+          "name": "anchor-params.mail-address",
+          "type": "java.lang.String",
+          "description": "E-mail address commonly used in this application."
+      },
+      {
           "name": "application.logging.mail.to-address",
           "type": "java.lang.String",
           "description": "E-mail address to send e-mail when an exception occurs."

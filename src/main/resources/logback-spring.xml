@@ -7,7 +7,15 @@
 	<include resource="org/springframework/boot/logging/logback/base.xml" />
 
   <!-- load the properties of application.properties. -->
-	<property resource="application.properties" />
+	<!-- <property resource="application.properties" /> -->
+	<springProperty name="host" source="spring.mail.host"/>
+	<springProperty name="port" source="spring.mail.port"/>
+	<springProperty name="username" source="spring.mail.username"/>
+	<springProperty name="password" source="spring.mail.password"/>
+	<springProperty name="pattern" source="logging.pattern.console"/>
+	<springProperty name="to-address" source="application.logging.mail.to-address"/>
+	<springProperty name="from-address" source="application.logging.mail.from-address"/>
+	<springProperty name="subject" source="application.logging.mail.subject"/>
 
   <!-- custom appender to send an email when an error occurs. -->
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
@@ -16,17 +24,17 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
-		<smtpHost>${spring.mail.host}</smtpHost>
-		<smtpPort>${spring.mail.port}</smtpPort>
+		<smtpHost>${host}</smtpHost>
+		<smtpPort>${port}</smtpPort>
 		<!-- <SSL>${javax.mail.SSL}</SSL> * yahoo mail -->
 		<!-- <STARTTLS>${javax.mail.startTLS}</STARTTLS> * gmail -->
-		<username>${spring.mail.username}</username>
-		<password>${spring.mail.password}</password>
-		<to>${application.logging.mail.to-address}</to>
-		<from>${application.logging.mail.from-address}</from>
-		<subject>${application.logging.mail.subject}</subject>
+		<username>${username}</username>
+		<password>${password}</password>
+		<to>${to-address}</to>
+		<from>${from-address}</from>
+		<subject>${subject}</subject>
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n</pattern>
+			<pattern>${pattern}</pattern>
 		</layout>
 		<asynchronousSending>true</asynchronousSending>
 	</appender>

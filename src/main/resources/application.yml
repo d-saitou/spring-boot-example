@@ -1,0 +1,57 @@
+anchor-params:
+  mail-address: &mail-address XXXXXXXX@test.com
+
+spring:
+  web:
+    resources:
+      cache:
+        period: 0
+  #messages: # *Configure the message source with the MessageSourceConfig class to implement custom annotations using Bean Validation.
+  #  basename: messages
+  #  cache-duration: -1
+  #  encoding: UTF-8
+  datasource:
+    url: jdbc:mysql://localhost:3306/example?rewriteBatchedStatements=true&connectionTimeZone=SERVER
+    username: example
+    password: example
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail: # ref: https://spring.pleiades.io/spring-boot/docs/current/reference/html/features.html#features.email
+    protocol: smtp
+    host: localhost
+    port: 25
+    username: *mail-address
+    password: XXXXXXXX
+    default-encoding: UTF-8
+    properties:
+      "[mail.smtp.connectiontimeout]": 5000
+      "[mail.smtp.timeout]": 3000
+      "[mail.smtp.writetimeout]": 5000
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  pattern:
+    console: "%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n"
+  level:
+    root: WARN
+    "[org.apache]": WARN
+    "[org.jboss]": WARN
+    #"[org.springframework.jdbc]": DEBUG
+    #"[org.springframework.transaction]": DEBUG
+    "[org.springframework.boot]": INFO
+    "[org.springframework]": WARN
+    "[_org.springframework]": WARN
+    "[org.thymeleaf]": WARN
+    "[org.hibernate]": WARN
+    "[org.mybatis]": WARN
+    "[com.zaxxer]": WARN
+    "[com.example.springboot]": INFO
+
+application:
+  logging:
+    mail:
+      to-address: *mail-address
+      from-address: *mail-address
+      subject: Spring Boot Example - logging mail
