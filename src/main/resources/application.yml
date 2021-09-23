@@ -32,14 +32,22 @@ mybatis:
     map-underscore-to-camel-case: true
 
 logging:
+  file:
+    name: C:/work/tmp/springbootexample.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: C:/work/tmp/springbootexample.%d{yyyy-MM-dd}.log
+      max-history: 1
   pattern:
     console: "%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n"
+    file: "%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n"
+  group:
+    transaction: "org.springframework.jdbc,org.springframework.transaction"
   level:
     root: WARN
+    #transaction: DEBUG
     "[org.apache]": WARN
     "[org.jboss]": WARN
-    #"[org.springframework.jdbc]": DEBUG
-    #"[org.springframework.transaction]": DEBUG
     "[org.springframework.boot]": INFO
     "[org.springframework]": WARN
     "[_org.springframework]": WARN

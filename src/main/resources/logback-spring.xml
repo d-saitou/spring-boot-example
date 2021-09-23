@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE logback>
 <!-- configuration file for LogBack (slf4J implementation) -->
-<configuration scan="true" scanPeriod="30 seconds" debug="false">
+<!-- <configuration scan="true" scanPeriod="30 seconds" debug="false"> -->
+<configuration scan="false">
 
   <!-- include default configuration for spring boot. -->
-	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
-  <!-- load the properties of application.properties. -->
-	<!-- <property resource="application.properties" /> -->
+	<!-- custom appender for log files that rotate daily. -->
+	<property name="app_log_file" value="${LOG_FILE}"/>                                         <!-- application.yml : logging.file.name -->
+	<property name="app_log_rolling_file" value="${LOGBACK_ROLLINGPOLICY_FILE_NAME_PATTERN}"/>  <!-- application.yml : logging.logback.rollingpolicy.file-name-pattern -->
+	<property name="app_log_rolling_max_history" value="${LOGBACK_ROLLINGPOLICY_MAX_HISTORY}"/> <!-- application.yml : logging.logback.rollingpolicy.max-history -->
+	<property name="app_log_file_pattern" value="${FILE_LOG_PATTERN}"/>                         <!-- application.yml : logging.pattern.file -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${app_log_file}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${app_log_rolling_file}</fileNamePattern>
+			<maxHistory>${app_log_rolling_max_history}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${app_log_file_pattern}</pattern>
+		</encoder>
+	</appender>
+	<appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="FILE"/>
+	</appender>
+
+	<!-- custom appender to send an email when an error occurs. -->
 	<springProperty name="host" source="spring.mail.host"/>
 	<springProperty name="port" source="spring.mail.port"/>
 	<springProperty name="username" source="spring.mail.username"/>
@@ -16,8 +37,6 @@
 	<springProperty name="to-address" source="application.logging.mail.to-address"/>
 	<springProperty name="from-address" source="application.logging.mail.from-address"/>
 	<springProperty name="subject" source="application.logging.mail.subject"/>
-
-  <!-- custom appender to send an email when an error occurs. -->
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>ERROR</level>
@@ -40,9 +59,9 @@
 	</appender>
 
 	<root>
-		<appender-ref ref="CONSOLE"/> <!-- default appender -->
-		<appender-ref ref="FILE"/>    <!-- default appender -->
-		<appender-ref ref="EMAIL"/>   <!-- custom appender -->
+		<appender-ref ref="CONSOLE"/>    <!-- default appender -->
+		<appender-ref ref="ASYNC_FILE"/> <!-- custom appender -->
+		<appender-ref ref="EMAIL"/>      <!-- custom appender -->
 	</root>
 
 </configuration>
