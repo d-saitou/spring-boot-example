@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.springboot.config.AppProperties;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,9 +27,7 @@ public class SendEmailThreadControlService {
 
 	private final ApplicationContext context;
 
-	@Value("${spring.mail.username}")
-	@Getter
-	private String fromAddr;
+	private final AppProperties props;
 
 	/**
 	 * Send emails to all email addresses.
@@ -53,7 +51,7 @@ public class SendEmailThreadControlService {
 		for (String toAddr : toAddrList) {
 			// Get a bean for each email address and assign a thread
 			SendEmailService service = context.getBean(SendEmailService.class);
-			futures.add(service.sendMail(toAddr, fromAddr, subject, body));
+			futures.add(service.sendMail(toAddr, props.getMailAddress(), subject, body));
 		}
 
 		// Wait for all threads to complete.

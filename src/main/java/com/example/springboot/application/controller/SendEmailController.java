@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import com.example.springboot.application.form.MailForm;
+import com.example.springboot.config.AppProperties;
 import com.example.springboot.domain.service.SendEmailThreadControlService;
 
 import org.springframework.context.MessageSource;
@@ -29,6 +30,8 @@ public class SendEmailController {
 
 	private final MessageSource msg;
 
+	private final AppProperties props;
+
 	private final SendEmailThreadControlService service;
 
 	/**
@@ -40,7 +43,7 @@ public class SendEmailController {
 	 */
 	@GetMapping("/async/mail")
 	public String get(Model model, @RequestParam Optional<Boolean> success, Locale locale) {
-		model.addAttribute("mailForm", new MailForm(service.getFromAddr(), null, null, null));
+		model.addAttribute("mailForm", new MailForm(props.getMailAddress(), null, null, null));
 		if (success.isPresent()) {
 			String message = null;
 			if (success.get().booleanValue()) {

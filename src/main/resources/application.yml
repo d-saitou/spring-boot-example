@@ -58,8 +58,8 @@ logging:
     "[com.example.springboot]": INFO
 
 application:
+  mail-address: *mail-address
   logging:
     mail:
       to-address: *mail-address
-      from-address: *mail-address
       subject: Spring Boot Example - logging mail

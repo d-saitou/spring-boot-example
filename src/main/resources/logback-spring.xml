@@ -35,7 +35,7 @@
 	<springProperty name="password" source="spring.mail.password"/>
 	<springProperty name="pattern" source="logging.pattern.console"/>
 	<springProperty name="to-address" source="application.logging.mail.to-address"/>
-	<springProperty name="from-address" source="application.logging.mail.from-address"/>
+	<springProperty name="from-address" source="application.mail-address"/>
 	<springProperty name="subject" source="application.logging.mail.subject"/>
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
