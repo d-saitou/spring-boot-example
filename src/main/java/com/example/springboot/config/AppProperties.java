@@ -16,4 +16,7 @@ public class AppProperties {
 	@NotEmpty
 	private String mailAddress;
 
+	@NotEmpty
+	private Boolean aopMethodLogging;
+
 }

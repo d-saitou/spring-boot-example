@@ -58,6 +58,7 @@ logging:
     "[com.example.springboot]": INFO
 
 application:
+  aop-method-logging: false
   mail-address: *mail-address
   logging:
     mail:

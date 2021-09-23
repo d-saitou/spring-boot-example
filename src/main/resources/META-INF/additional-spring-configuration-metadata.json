@@ -6,6 +6,11 @@
           "description": "E-mail address commonly used in this application."
       },
       {
+          "name": "application.aop-method-logging",
+          "type": "java.lang.Boolean",
+          "description": "Whether to output the log at the start and end of the Java method."
+      },
+      {
           "name": "application.logging.mail.to-address",
           "type": "java.lang.String",
           "description": "E-mail address to send e-mail when an exception occurs."
