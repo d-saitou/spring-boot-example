@@ -18,10 +18,10 @@
   <nav th:fragment="header" class="navbar navbar-expand-lg navbar-light app-nav app-nav-lg">
     <span class="navbar-brand" th:text="#{header.text.title}">Spring MVC Example</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target=".navbar-collapse" aria-controls="sidebarContents headerContents" aria-expanded="false">
+            data-target=".navbar-collapse" aria-controls="sidebarContents headerContents" aria-expanded="false" sec:authorize="isAuthenticated()">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="headerContents">
+    <div class="collapse navbar-collapse" id="headerContents" sec:authorize="isAuthenticated()">
       <ul class="navbar-nav ml-lg-auto d-lg-flex flex-row">
         <li class="nav-item ml-auto px-2">
           <span class="navbar-text align-centor">
@@ -44,11 +44,17 @@
     <!--
      -- side menu
      --->
-    <nav th:fragment="sidebar" class="navbar navbar-expand-lg app-sidebar" id="sidebarContents">
+    <nav th:fragment="sidebar" class="navbar navbar-expand-lg app-sidebar" id="sidebarContents" sec:authorize="isAuthenticated()">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav app-sidebar-menu">
           <li class="nav-item">
             <a class="nav-link active" th:href="@{/async/mail}" href="#" th:text="#{SendEmail.title}">side menu link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/exception/html}" href="#" th:text="#{ExceptionTestForHtml.title}">side menu link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/exception/rest}" href="#" th:text="#{ExceptionTestForRest.title}">side menu link</a>
           </li>
           <li class="nav-item" sec:authorize="principal.username == 'admin'">
             <a class="nav-link active" th:href="@{/user/list}" href="#" th:text="#{UserList.title}">side menu link</a>
