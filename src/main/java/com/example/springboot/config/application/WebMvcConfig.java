@@ -1,7 +1,7 @@
 package com.example.springboot.config.application;
 
-import com.example.springboot.config.async.CustomCallableProcessingInterceptor;
-import com.example.springboot.config.async.CustomDeferredResultProcessingInterceptor;
+import com.example.springboot.config.interceptor.AppCallableProcessingInterceptor;
+import com.example.springboot.config.interceptor.AppDeferredResultProcessingInterceptor;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Configuration;
@@ -54,8 +54,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
 		configurer.setTaskExecutor(taskExecutor);
 		configurer.setDefaultTimeout(60000);
-		configurer.registerCallableInterceptors(new CustomCallableProcessingInterceptor());
-		configurer.registerDeferredResultInterceptors(new CustomDeferredResultProcessingInterceptor());
+		configurer.registerCallableInterceptors(new AppCallableProcessingInterceptor());
+		configurer.registerDeferredResultInterceptors(new AppDeferredResultProcessingInterceptor());
 	}
 
 }

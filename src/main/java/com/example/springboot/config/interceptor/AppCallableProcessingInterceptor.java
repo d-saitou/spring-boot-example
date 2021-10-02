@@ -1,4 +1,4 @@
-package com.example.springboot.config.async;
+package com.example.springboot.config.interceptor;
 
 import java.util.concurrent.Callable;
 
@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * Implements common methods in async processing executed by Spring MVC managed thread.
  */
 @Slf4j
-public class CustomCallableProcessingInterceptor implements CallableProcessingInterceptor {
+public class AppCallableProcessingInterceptor implements CallableProcessingInterceptor {
 
 	/**
 	 * Before execution ServletRequest#startAsync.

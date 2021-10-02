@@ -1,4 +1,4 @@
-package com.example.springboot.config.async;
+package com.example.springboot.config.interceptor;
 
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * Implements common methods in async processing executed by Spring MVC unmanaged thread.
  */
 @Slf4j
-public class CustomDeferredResultProcessingInterceptor implements DeferredResultProcessingInterceptor {
+public class AppDeferredResultProcessingInterceptor implements DeferredResultProcessingInterceptor {
 
 	/**
 	 * Before execution ServletRequest#startAsync.
