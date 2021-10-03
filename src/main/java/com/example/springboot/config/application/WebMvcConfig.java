@@ -2,6 +2,7 @@ package com.example.springboot.config.application;
 
 import com.example.springboot.config.interceptor.AppCallableProcessingInterceptor;
 import com.example.springboot.config.interceptor.AppDeferredResultProcessingInterceptor;
+import com.example.springboot.config.interceptor.LogMDCPutInterceptor;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -44,6 +46,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("index");
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/main").setViewName("main");
+	}
+
+	/**
+	 * Configure interceptor.
+	 */
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LogMDCPutInterceptor());
 	}
 
 	/**

@@ -37,10 +37,10 @@ logging:
   logback:
     rollingpolicy:
       file-name-pattern: C:/work/tmp/springbootexample.%d{yyyy-MM-dd}.log
-      max-history: 1
+      max-history: 30
   pattern:
-    console: "%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n"
-    file: "%date %-5level [%thread] %logger{128} [%file:%line %method] %msg%n"
+    file:    "%date %-5level [%thread] [%X{REMOTE_ADDR:-undefined} - %X{USER_ID:-undefined}] %logger{2} [%file:%line %method] %msg%n"
+    console: "%date %-5level [%thread] [%X{REMOTE_ADDR:-undefined} - %X{USER_ID:-undefined}] %logger{2} [%file:%line %method] %msg%n"
   group:
     transaction: "org.springframework.jdbc,org.springframework.transaction"
   level:
