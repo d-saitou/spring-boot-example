@@ -29,6 +29,12 @@ public class AppConstants {
 			+ "not @target(org.springframework.transaction.annotation.Transactional)";
 	// @formatter:on
 
+	/** configuration : MDC key name - request id. */
+	public static final String MDC_KEY_REMOTE_ADDR = "REMOTE_ADDR";
+
+	/** configuration : MDC key name - user id. */
+	public static final String MDC_KEY_USER_ID = "USER_ID";
+
 	/** security : role id - administrator role. */
 	public static final String ROLE_ID_FOR_ADMIN = "0001";
 
