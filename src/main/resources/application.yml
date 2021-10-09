@@ -1,7 +1,16 @@
 anchor-params:
+  data-directory: &data-directory C:/work/tmp
   mail-address: &mail-address XXXXXXXX@test.com
 
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 100MB
+      file-size-threshold: 50MB
+      location: *data-directory
+      resolve-lazily: false
   web:
     resources:
       cache:
@@ -61,6 +70,7 @@ logging:
 
 application:
   aop-method-logging: false
+  data-directory: *data-directory
   mail-address: *mail-address
   logging:
     mail:

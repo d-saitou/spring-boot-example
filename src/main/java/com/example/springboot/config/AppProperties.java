@@ -14,9 +14,12 @@ import lombok.Data;
 public class AppProperties {
 
 	@NotEmpty
+	private Boolean aopMethodLogging;
+
+	@NotEmpty
 	private String mailAddress;
 
 	@NotEmpty
-	private Boolean aopMethodLogging;
+	private String dataDirectory;
 
 }

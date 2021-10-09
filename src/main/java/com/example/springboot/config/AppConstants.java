@@ -57,6 +57,8 @@ public class AppConstants {
 	static {
 		List<String> list = new ArrayList<String>();
 		list.add("/main");
+		list.add("/file/upload"); // GET request
+		list.add("/file/upload/*"); // POST request
 		list.add("/exception/html");
 		list.add("/exception/rest");
 		list.add("/exception/rest/api");
