@@ -1,8 +1,11 @@
 package com.example.springboot.domain.repository;
 
+import java.util.List;
+
 import com.example.springboot.domain.entity.TTask;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * MyBatis repository (table: t_task).
@@ -15,6 +18,6 @@ public interface TTaskMapper {
 	 * @param entity TTask entity.
 	 * @return result.
 	 */
-	boolean create(TTask entity);
+	void create(@Param("entities") List<TTask> entities);
 
 }

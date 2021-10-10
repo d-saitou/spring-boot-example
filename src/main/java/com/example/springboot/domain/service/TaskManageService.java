@@ -24,9 +24,7 @@ public class TaskManageService {
 	 * @param entities task entity.
 	 */
 	public void txCreateTasks(List<TTask> entities) {
-		for (TTask entity : entities) {
-			repo.create(entity);
-		}
+		repo.create(entities);
 	}
 
 }
