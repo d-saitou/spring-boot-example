@@ -60,6 +60,7 @@ public class AppConstants {
 		list.add("/file/upload"); // GET request
 		list.add("/file/upload/*"); // POST request
 		list.add("/task/create");
+		list.add("/task/list");
 		list.add("/exception/html");
 		list.add("/exception/rest");
 		list.add("/exception/rest/api");

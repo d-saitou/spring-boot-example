@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.domain.repository.TTaskMapper">
+  <sql id="userIdEquals">
+    <where>
+      user_id = #{userId}
+    </where>
+  </sql>
+
+  <select id="countByUserIdEquals" resultType="int">
+    SELECT COUNT(*) FROM t_task <include refid="userIdEquals"/>
+  </select>
+
+  <select id="findPageByUserIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+    SELECT
+      id, title, schedule_date, status, description, user_id
+    FROM
+      t_task
+    <include refid="userIdEquals"/>
+    ORDER BY
+      id
+    LIMIT
+      #{size}
+    OFFSET
+      #{offset}
+  </select>
+
   <!-- insert
   <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.springboot.domain.entity.TTask">
     INSERT INTO t_task (title, schedule_date, status, description, user_id) VALUES (#{title}, #{scheduleDate}, #{status}, #{description}, #{userId})
   </insert>
   -->
+
   <!-- bulk insert -->
   <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
     INSERT INTO t_task (title, schedule_date, status, description, user_id) VALUES

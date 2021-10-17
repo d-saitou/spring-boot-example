@@ -22,4 +22,14 @@ public class AppProperties {
 	@NotEmpty
 	private String dataDirectory;
 
+	private Content content;
+
+	@Data
+	public static class Content {
+
+		@NotEmpty
+		private int pageSize;
+
+	}
+
 }

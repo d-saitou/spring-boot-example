@@ -72,6 +72,8 @@ application:
   aop-method-logging: false
   data-directory: *data-directory
   mail-address: *mail-address
+  content:
+    page-size: 100
   logging:
     mail:
       to-address: *mail-address

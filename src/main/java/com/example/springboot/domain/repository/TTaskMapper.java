@@ -14,9 +14,25 @@ import org.apache.ibatis.annotations.Param;
 public interface TTaskMapper {
 
 	/**
+	 * Select by user id and count after pagination.
+	 * @param userId user id.
+	 * @return record count after pagnation.
+	 */
+	int countByUserIdEquals(@Param("userId") String userId);
+
+	/**
+	 * Select by user id and pagination.
+	 * @param userId user id.
+	 * @param size   number of content data per page.
+	 * @param offset number of start records for pagenation.
+	 * @return TTask entities.
+	 */
+	List<TTask> findPageByUserIdEquals(
+			@Param("userId") String userId, @Param("size") int size, @Param("offset") int offset);
+
+	/**
 	 * Insert.
-	 * @param entity TTask entity.
-	 * @return result.
+	 * @param entities TTask entities.
 	 */
 	void create(@Param("entities") List<TTask> entities);
 

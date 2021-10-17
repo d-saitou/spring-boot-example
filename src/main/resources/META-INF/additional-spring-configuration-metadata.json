@@ -1,29 +1,34 @@
 {
   "properties": [
-      {
-          "name": "anchor-params.mail-address",
-          "type": "java.lang.String",
-          "description": "E-mail address commonly used in this application."
-      },
-      {
-          "name": "application.aop-method-logging",
-          "type": "java.lang.Boolean",
-          "description": "Whether to output the log at the start and end of the Java method."
-      },
-      {
-          "name": "application.logging.mail.to-address",
-          "type": "java.lang.String",
-          "description": "E-mail address to send e-mail when an exception occurs."
-      },
-      {
-          "name": "application.logging.mail.from-address",
-          "type": "java.lang.String",
-          "description": "Email address of the sender of the email when an exception occurs."
-      },
-      {
-          "name": "application.logging.mail.subject",
-          "type": "java.lang.String",
-          "description": "Subject of email when exception occurs."
-      }
+    {
+      "name": "anchor-params.mail-address",
+      "type": "java.lang.String",
+      "description": "E-mail address commonly used in this application."
+    },
+    {
+      "name": "application.aop-method-logging",
+      "type": "java.lang.Boolean",
+      "description": "Whether to output the log at the start and end of the Java method."
+    },
+    {
+      "name": "application.content.page-size",
+      "type": "java.lang.Integer",
+      "description": "Number of records per page to display on the content pages."
+    },
+    {
+      "name": "application.logging.mail.to-address",
+      "type": "java.lang.String",
+      "description": "E-mail address to send e-mail when an exception occurs."
+    },
+    {
+      "name": "application.logging.mail.from-address",
+      "type": "java.lang.String",
+      "description": "Email address of the sender of the email when an exception occurs."
+    },
+    {
+      "name": "application.logging.mail.subject",
+      "type": "java.lang.String",
+      "description": "Subject of email when exception occurs."
+    }
   ]
 }
