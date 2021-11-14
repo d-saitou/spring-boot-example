@@ -6,6 +6,11 @@
       "description": "E-mail address commonly used in this application."
     },
     {
+      "name": "application.charset",
+      "type": "java.lang.String",
+      "description": "Character set used by this application."
+    },
+    {
       "name": "application.aop-method-logging",
       "type": "java.lang.Boolean",
       "description": "Whether to output the log at the start and end of the Java method."
@@ -14,6 +19,11 @@
       "name": "application.content.page-size",
       "type": "java.lang.Integer",
       "description": "Number of records per page to display on the content pages."
+    },
+    {
+      "name": "application.content.download-file-name",
+      "type": "java.lang.String",
+      "description": "The name of the file to download."
     },
     {
       "name": "application.logging.mail.to-address",

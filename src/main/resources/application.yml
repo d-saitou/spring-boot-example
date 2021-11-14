@@ -69,11 +69,13 @@ logging:
     "[com.example.springboot]": INFO
 
 application:
+  charset: UTF-8
   aop-method-logging: false
   data-directory: *data-directory
   mail-address: *mail-address
   content:
     page-size: 100
+    download-file-name: taskdata.xlsx
   logging:
     mail:
       to-address: *mail-address

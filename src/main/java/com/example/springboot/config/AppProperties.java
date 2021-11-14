@@ -14,6 +14,9 @@ import lombok.Data;
 public class AppProperties {
 
 	@NotEmpty
+	private String charset;
+
+	@NotEmpty
 	private Boolean aopMethodLogging;
 
 	@NotEmpty
@@ -29,6 +32,9 @@ public class AppProperties {
 
 		@NotEmpty
 		private int pageSize;
+
+		@NotEmpty
+		private String downloadFileName;
 
 	}
 

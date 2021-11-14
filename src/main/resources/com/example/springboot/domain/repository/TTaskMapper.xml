@@ -17,6 +17,16 @@
     </where>
   </sql>
 
+  <select id="findByUserIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+    SELECT
+      id, title, schedule_date, status, description, user_id
+    FROM
+      t_task
+    <include refid="userIdEquals"/>
+    ORDER BY
+      id
+  </select>
+
   <select id="countByUserIdEquals" resultType="int">
     SELECT COUNT(*) FROM t_task <include refid="userIdEquals"/>
   </select>

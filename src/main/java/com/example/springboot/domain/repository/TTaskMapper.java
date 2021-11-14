@@ -21,6 +21,13 @@ public interface TTaskMapper {
 	TTask findByIdEquals(@Param("id") Integer id);
 
 	/**
+	 * Select by user id.
+	 * @param userId user id.
+	 * @return TTask entities.
+	 */
+	List<TTask> findByUserIdEquals(@Param("userId") String userId);
+
+			/**
 	 * Select by user id and count after pagination.
 	 * @param userId user id.
 	 * @return record count after pagnation.
