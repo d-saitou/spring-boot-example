@@ -23,10 +23,19 @@ public class TaskManageService {
 	/**
 	 * Get pagination tasks by user ID.
 	 * @param id task id.
-	 * @return TTask entoty.
+	 * @return TTask entity.
 	 */
 	public TTask txGetTaskById(Integer id) {
 		return repo.findByIdEquals(id);
+	}
+
+	/**
+	 * Get tasks by user ID.
+	 * @param userId user id.
+	 * @return TTask entities.
+	 */
+	public List<TTask> txGetTaskByUserid(String userId) {
+		return repo.findByUserIdEquals(userId);
 	}
 
 	/**

@@ -67,6 +67,8 @@ public class AppConstants {
 		list.add("/task/update/*"); // GET request
 		list.add("/task/bulk/list");
 		list.add("/task/bulk/update");
+		list.add("/task/api");
+		list.add("/task/api/page");
 		list.add("/exception/html");
 		list.add("/exception/rest");
 		list.add("/exception/rest/api");
