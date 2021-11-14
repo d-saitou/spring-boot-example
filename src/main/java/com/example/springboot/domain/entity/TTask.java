@@ -21,7 +21,7 @@ public class TTask implements Serializable {
 
 	private LocalDate scheduleDate;
 
-	private boolean status;
+	private Boolean status;
 
 	private String description;
 

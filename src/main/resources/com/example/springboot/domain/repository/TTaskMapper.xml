@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.domain.repository.TTaskMapper">
+
+  <select id="findByIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+    SELECT
+      id, title, schedule_date, status, description, user_id
+    FROM
+      t_task
+    WHERE
+      id = #{id}
+  </select>
+
   <sql id="userIdEquals">
     <where>
       user_id = #{userId}
@@ -38,4 +48,43 @@
       (#{item.title}, #{item.scheduleDate}, #{item.status}, #{item.description}, #{item.userId})
     </foreach>
   </insert>
+
+  <!-- bulk update -->
+  <update id="update" parameterType="java.util.List">
+    UPDATE
+      t_task
+    SET
+      title = ELT(
+        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.title}</foreach>
+      ),
+      schedule_date = ELT(
+        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.scheduleDate}</foreach>
+      ),
+      status = CAST(ELT(
+        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.status}</foreach>
+      ) AS UNSIGNED),
+      description = ELT(
+        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.description}</foreach>
+      ),
+      user_id = ELT(
+        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.userId}</foreach>
+      )
+    WHERE
+      id IN (
+        <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>
+      )
+  </update>
+
+  <!-- delete -->
+  <delete id="delete" parameterType="List">
+    DELETE FROM t_task WHERE id IN (
+      <foreach item="id" collection="idList" separator=",">#{id}</foreach>
+    )
+  </delete>
+
 </mapper>

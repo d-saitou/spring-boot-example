@@ -57,10 +57,10 @@
                     </td>
                     <td th:text="${task.description}" class="align-middle">...</td>
                     <td class="align-middle" style="text-align: center;">
-                      <a class="btn btn-primary" th:text="#{common.button.update}"></a>
+                      <a class="btn btn-primary" th:href="@{'/task/update/' + ${task.id}(page=*{currentPage})}" th:text="#{common.button.update}"></a>
                     </td>
                     <td class="align-middle" style="text-align: center;">
-                      <a class="btn btn-warning" th:text="#{common.button.delete}"></a>
+                      <a class="btn btn-warning" th:href="@{'/task/delete/' + ${task.id}(page=*{currentPage})}" th:text="#{common.button.delete}"></a>
                     </td>
                   </tr>
                 </tbody>

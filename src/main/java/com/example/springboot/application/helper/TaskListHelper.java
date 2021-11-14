@@ -35,7 +35,7 @@ public class TaskListHelper {
 		form.setId(entity.getId());
 		form.setTitle(entity.getTitle());
 		form.setScheduleDate(entity.getScheduleDate().format(DateTimeFormatter.ofPattern(format)));
-		form.setStatus(entity.isStatus());
+		form.setStatus(entity.getStatus());
 		form.setDescription(entity.getDescription());
 		form.setUserId(entity.getUserId());
 		return form;

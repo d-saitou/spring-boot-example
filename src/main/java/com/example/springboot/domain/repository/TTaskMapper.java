@@ -14,6 +14,13 @@ import org.apache.ibatis.annotations.Param;
 public interface TTaskMapper {
 
 	/**
+	 * Select by task id.
+	 * @param id task id.
+	 * @return TTask entity.
+	 */
+	TTask findByIdEquals(@Param("id") Integer id);
+
+	/**
 	 * Select by user id and count after pagination.
 	 * @param userId user id.
 	 * @return record count after pagnation.
@@ -35,5 +42,18 @@ public interface TTaskMapper {
 	 * @param entities TTask entities.
 	 */
 	void create(@Param("entities") List<TTask> entities);
+
+	/**
+	 * Update.
+	 * @param entities TTask entities.
+	 */
+	void update(@Param("entities") List<TTask> entities);
+
+	/**
+	 * Delete.
+	 * @param id task id.
+	 * @return Number of deleted records.
+	 */
+	int delete(@Param("idList") List<Integer> id);
 
 }

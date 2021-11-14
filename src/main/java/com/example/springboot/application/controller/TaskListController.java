@@ -25,11 +25,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TaskListController {
 
-	private final AppProperties props;
+	protected final AppProperties props;
 
-	private final TaskManageService service;
+	protected final TaskManageService service;
 
-	private final TaskListHelper helper;
+	protected final TaskListHelper helper;
 
 	/**
 	 * GET request.

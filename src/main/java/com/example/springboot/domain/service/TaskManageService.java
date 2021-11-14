@@ -21,11 +21,12 @@ public class TaskManageService {
 	private final TTaskMapper repo;
 
 	/**
-	 * Create tasks.
-	 * @param entities task entity.
+	 * Get pagination tasks by user ID.
+	 * @param id task id.
+	 * @return TTask entoty.
 	 */
-	public void txCreateTasks(List<TTask> entities) {
-		repo.create(entities);
+	public TTask txGetTaskById(Integer id) {
+		return repo.findByIdEquals(id);
 	}
 
 	/**
@@ -40,6 +41,36 @@ public class TaskManageService {
 		int count = repo.countByUserIdEquals(userId);
 		List<TTask> content = repo.findPageByUserIdEquals(userId, pageSize, offset);
 		return new Page<TTask>(pageSize, currentPage, count, content);
+	}
+
+	/**
+	 * Create tasks.
+	 * @param entities task entity.
+	 */
+	public void txCreateTasks(List<TTask> entities) {
+		if (entities.size() > 0) {
+			repo.create(entities);
+		}
+	}
+
+	/**
+	 * Update tasks.
+	 * @param entities task entity.
+	 */
+	public void txUpdateTasks(List<TTask> entities) {
+		if (entities.size() > 0) {
+			repo.update(entities);
+		}
+	}
+
+	/**
+	 * Delete tasks.
+	 * @param idList task id list.
+	 */
+	public void txDeleteTasks(List<Integer> idList) {
+		if (idList.size() > 0) {
+			repo.delete(idList);
+		}
 	}
 
 }
