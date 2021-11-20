@@ -80,6 +80,7 @@ public class AppConstants {
 	public static final List<String> URI_ADMIN_PAGE;
 	static {
 		List<String> list = new ArrayList<String>();
+		list.add("/schedule/history");
 		list.add("/user/list");
 		list.add("/user/delete/*");
 		URI_ADMIN_PAGE = Collections.unmodifiableList(list);

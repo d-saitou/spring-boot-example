@@ -1,6 +1,7 @@
 package com.example.springboot.domain.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.example.springboot.domain.entity.TScheduledTaskHistory;
 import com.example.springboot.domain.repository.TScheduledTaskHistoryMapper;
@@ -22,7 +23,6 @@ public class ScheduledTaskService {
 
 	/**
 	 * Save task history.
-	 * 
 	 * @param methodName method name of scheduled task.
 	 */
 	public void txSaveTaskHistory(String methodName) {
@@ -37,6 +37,14 @@ public class ScheduledTaskService {
 			log.error("Scheduled task failed. [method : {}()]", methodName, e);
 			throw e;
 		}
+	}
+
+	/**
+	 * Get all task history.
+	 * @return entities.
+	 */
+	public List<TScheduledTaskHistory> txGetAllTaskHistory() {
+		return repo.findAllOrderById();
 	}
 
 }

@@ -4,4 +4,13 @@
   <insert id="create" parameterType="com.example.springboot.domain.entity.TScheduledTaskHistory">
     INSERT INTO t_scheduledtask_history (method, message, update_date) VALUES (#{method}, #{message}, #{updateDate})
   </insert>
+
+  <select id="findAllOrderById" resultType="com.example.springboot.domain.entity.TScheduledTaskHistory">
+    SELECT
+      id, method, message, update_date
+    FROM
+      t_scheduledtask_history
+    ORDER BY
+      id
+  </select>
 </mapper>
