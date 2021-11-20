@@ -26,6 +26,31 @@
       "description": "The name of the file to download."
     },
     {
+      "name": "application.scheduler.enable",
+      "type": "java.lang.Boolean",
+      "description": "Enabling scheduled tasks."
+    },
+    {
+      "name": "application.scheduler.fixedRate",
+      "type": "java.lang.Integer",
+      "description": "Scheduling ScheduledTaskService#fixedRateTask()."
+    },
+    {
+      "name": "application.scheduler.initialDelay",
+      "type": "java.lang.Integer",
+      "description": "Scheduling ScheduledTaskService#initialAndFixedDelayTask()."
+    },
+    {
+      "name": "application.scheduler.fixedDelay",
+      "type": "java.lang.Integer",
+      "description": "Scheduling ScheduledTaskService#initialAndFixedDelayTask()."
+    },
+    {
+      "name": "application.scheduler.cron",
+      "type": "java.lang.String",
+      "description": "Scheduling ScheduledTaskService#cronTask()."
+    },
+    {
       "name": "application.logging.mail.to-address",
       "type": "java.lang.String",
       "description": "E-mail address to send e-mail when an exception occurs."

@@ -25,7 +25,11 @@ public class AppProperties {
 	@NotEmpty
 	private String dataDirectory;
 
+	@NotEmpty
 	private Content content;
+
+	@NotEmpty
+	private Scheduler scheduler;
 
 	@Data
 	public static class Content {
@@ -36,6 +40,14 @@ public class AppProperties {
 		@NotEmpty
 		private String downloadFileName;
 
+	}
+
+	@Data
+	public static class Scheduler {
+
+		@NotEmpty
+		private Boolean enable;
+	
 	}
 
 }

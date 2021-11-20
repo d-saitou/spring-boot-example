@@ -76,6 +76,12 @@ application:
   content:
     page-size: 100
     download-file-name: taskdata.xlsx
+  scheduler:
+    enable: true
+    fixedRate: 1800000
+    initialDelay: 60000
+    fixedDelay: 1800000
+    cron: 0 */30 * * * *
   logging:
     mail:
       to-address: *mail-address
