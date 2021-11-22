@@ -70,7 +70,7 @@ public class AppErrorController implements ErrorController {
 		body.put("status", status.value());
 		body.put("path", request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
 		body.put("exception", e == null ? "" : e.getClass().getCanonicalName());
-		body.put("message", e.getMessage());
+		body.put("message", e == null ? "" : e.getMessage());
 
 		return new ResponseEntity<>(body, status);
 	}
