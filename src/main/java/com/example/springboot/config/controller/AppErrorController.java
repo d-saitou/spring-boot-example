@@ -38,6 +38,7 @@ public class AppErrorController implements ErrorController {
 	 * Error handling for HTML responses.
 	 * @param request HttpServletRequest object.
 	 * @param mav     ModelAndView object.
+	 * @param locale  Locale object.
 	 * @return ModelAndView object.
 	 */
 	@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)

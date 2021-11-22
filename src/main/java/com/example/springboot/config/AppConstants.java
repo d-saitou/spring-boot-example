@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class AppConstants {
 
+	/**
+	 * Private constructor.
+	 */
+	private AppConstants() {}
+
 	/** configuration : session time out. */
 	public static final int DEFAULT_SESSION_TIMEOUT = 300;
 

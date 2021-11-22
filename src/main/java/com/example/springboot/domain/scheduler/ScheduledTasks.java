@@ -32,7 +32,9 @@ public class ScheduledTasks {
 	/**
 	 * initialDelay and fixedDelay task.
 	 */
-	@Scheduled(initialDelayString = "${application.scheduler.initialDelay}", fixedDelayString = "${application.scheduler.fixedDelay}")
+	@Scheduled(
+			initialDelayString = "${application.scheduler.initialDelay}",
+			fixedDelayString = "${application.scheduler.fixedDelay}")
 	public void initialAndFixedDelayTask() {
 		if (props.getScheduler().getEnable()) {
 			service.txSaveTaskHistory("initialAndFixedDelayTask");

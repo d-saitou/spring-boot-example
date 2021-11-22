@@ -20,6 +20,7 @@ public class ExceptionTestController {
 
 	/**
 	 * Display screen to test REST error handling.
+	 * @return HTML template path.
 	 */
 	@GetMapping("/exception/rest")
 	public String exceptionTestForRest() {

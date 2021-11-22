@@ -44,9 +44,10 @@ public class FileDownloadController {
 			HttpServletResponse response, Locale locale,
 			@AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
 		String path = service.generateExcelFileAbsolutePath();
+		String downloadFileName = props.getContent().getDownloadFileName();
 		try {
 			service.txCreateExcelFile(path, userDetails.getUsername(), locale);
-			WebUtility.setFileDownloadResponse(response, path, props.getContent().getDownloadFileName(), props.getCharset());
+			WebUtility.setFileDownloadResponse(response, path, downloadFileName, props.getCharset());
 		} catch (Exception e) {
 			String message = msg.getMessage("FileDownload.msg.failed", null, locale);
 			WebUtility.setAlertWindowResponse(response, message, props.getCharset());

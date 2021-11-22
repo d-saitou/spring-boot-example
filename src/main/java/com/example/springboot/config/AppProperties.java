@@ -31,6 +31,9 @@ public class AppProperties {
 	@NotEmpty
 	private Scheduler scheduler;
 
+	/**
+	 * properties: application.content.*
+	 */
 	@Data
 	public static class Content {
 
@@ -42,6 +45,9 @@ public class AppProperties {
 
 	}
 
+	/**
+	 * properties: application.scheduler.*
+	 */
 	@Data
 	public static class Scheduler {
 

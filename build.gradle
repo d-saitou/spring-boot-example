@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'checkstyle'
 }
 
 group = 'com.example.springboot'
@@ -44,4 +45,15 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+/*
+ * CheckStyle plugin.
+ * task: gradle check
+ * config: ./config/checkstyle/checkstyle.xml
+ * report: ./build/reports/checkstyle
+ * reference: https://docs.gradle.org/current/dsl/org.gradle.api.plugins.quality.CheckstyleExtension.html
+ */
+checkstyle {
+	toolVersion = '9.1'
 }

@@ -51,6 +51,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	/**
 	 * Configure interceptor.
 	 */
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LogMDCPutInterceptor());
 	}

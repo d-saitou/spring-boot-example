@@ -30,8 +30,9 @@ public class TaskBulkUpdateController extends TaskListController {
 
 	/**
 	 * Constructor.
+	 * @param props   AppProperties bean.
 	 * @param service TaskManageService bean.
-	 * @param helper TaskListHelper bean.
+	 * @param helper  TaskListHelper bean.
 	 */
 	public TaskBulkUpdateController(
 			AppProperties props, TaskManageService service, TaskListHelper helper) {
@@ -59,6 +60,7 @@ public class TaskBulkUpdateController extends TaskListController {
 
 	/**
 	 * POST request.
+	 *
 	 * <p>NOTE:<br>
 	 * When using validation with a controller, the order of the methods must be as
 	 * follows. If you do not follow the above rules, you will get a 400 error.<br>
