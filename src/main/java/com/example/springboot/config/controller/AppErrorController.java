@@ -47,7 +47,7 @@ public class AppErrorController implements ErrorController {
 
 		mav.setStatus(status);
 		mav.setViewName("error");
-		mav.addObject("stacktrace", CommonUtility.getStackTraceString(e));
+		mav.addObject("stacktrace", e == null ? "" : CommonUtility.getStackTraceString(e));
 		if (status == HttpStatus.NOT_FOUND) {
 			mav.addObject("message", msg.getMessage("common.msg.404", null, locale));
 		} else {
@@ -61,7 +61,7 @@ public class AppErrorController implements ErrorController {
 	 * @param request HttpServletRequest object.
 	 * @return ResponseEntity object.
 	 */
-	@RequestMapping
+	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
 		Throwable e = errorAttributes.getError(new ServletWebRequest(request));
 		HttpStatus status = getHttpStatus(request);
@@ -69,7 +69,7 @@ public class AppErrorController implements ErrorController {
 		Map<String, Object> body = new HashMap<String, Object>();
 		body.put("status", status.value());
 		body.put("path", request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
-		body.put("exception", e.getClass().getCanonicalName());
+		body.put("exception", e == null ? "" : e.getClass().getCanonicalName());
 		body.put("message", e.getMessage());
 
 		return new ResponseEntity<>(body, status);
