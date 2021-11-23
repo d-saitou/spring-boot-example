@@ -2,6 +2,7 @@ package com.example.springboot.domain.helper;
 
 import java.util.List;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,6 +11,9 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@SuppressFBWarnings(
+		value = { "EI_EXPOSE_REP", "EI_EXPOSE_REP2" },
+		justification = "Allow to set list values of form by Spring.")
 public class Page<T> {
 
 	private int pageSize;

@@ -12,6 +12,7 @@ import com.example.springboot.config.AppProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 //@SessionScope
 @RequiredArgsConstructor
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2")
 public class MultipartFileManageService {
 
 	private final AppProperties props;

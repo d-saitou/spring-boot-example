@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 //@SessionScope
 @RequiredArgsConstructor
 @Slf4j
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2")
 public class SendEmailThreadControlService {
 
 	private final ApplicationContext context;

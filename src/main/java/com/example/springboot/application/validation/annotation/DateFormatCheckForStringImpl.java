@@ -8,6 +8,8 @@ import java.time.format.ResolverStyle;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * DateFormatCheckForString annotation implementation.
  * See {@link DateFormatCheckForString} interface for details.
@@ -17,7 +19,8 @@ public class DateFormatCheckForStringImpl
 
 	private String[] format;
 
-	@SuppressWarnings("unused")
+	// @SuppressWarnings("unused")
+	@SuppressFBWarnings(value = "URF_UNREAD_FIELD")
 	private String message;
 
 	/**

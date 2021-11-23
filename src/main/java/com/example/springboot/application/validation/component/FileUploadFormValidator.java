@@ -7,6 +7,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Custom validator for file upload screen.
  */
@@ -27,6 +29,7 @@ public class FileUploadFormValidator implements Validator {
 	 * Validate FileUploadForm instances.
 	 */
 	@Override
+	@SuppressFBWarnings(value = "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
 	public void validate(Object obj, Errors e) {
 		FileUploadForm form = (FileUploadForm) obj;
 		if (form.getFile().length == 0) {

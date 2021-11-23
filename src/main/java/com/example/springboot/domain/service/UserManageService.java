@@ -11,6 +11,7 @@ import com.example.springboot.domain.repository.MUserRoleMapper;
 
 import org.springframework.stereotype.Service;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Service
 @RequiredArgsConstructor
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2")
 public class UserManageService {
 
 	private final MUserMapper userRepo;

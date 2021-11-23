@@ -8,6 +8,7 @@ import com.example.springboot.domain.repository.TTaskMapper;
 
 import org.springframework.stereotype.Service;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 //@SessionScope
 @RequiredArgsConstructor
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2")
 public class TaskManageService {
 
 	private final TTaskMapper repo;

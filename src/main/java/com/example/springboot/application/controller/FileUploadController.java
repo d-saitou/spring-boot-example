@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -63,6 +64,7 @@ public class FileUploadController {
 	 * @throws IOException
 	 */
 	@PostMapping("/file/upload/single")
+	@SuppressFBWarnings(value = "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
 	public String postSingleFile(
 			@RequestParam("file") MultipartFile file, Model model, Locale locale)
 			throws IOException {

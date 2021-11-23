@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Data;
 
 /**
@@ -11,6 +12,9 @@ import lombok.Data;
  */
 @ConfigurationProperties(prefix = "application")
 @Data
+@SuppressFBWarnings(
+		value = { "EI_EXPOSE_REP", "EI_EXPOSE_REP2" },
+		justification = "Return the structure of the property.")
 public class AppProperties {
 
 	@NotEmpty

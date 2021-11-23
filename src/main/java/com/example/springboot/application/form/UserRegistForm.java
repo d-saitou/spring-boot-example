@@ -15,12 +15,16 @@ import com.example.springboot.application.validation.annotation.DateFormatCheckF
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Data;
 
 /**
  * User registration screen form.
  */
 @Data
+@SuppressFBWarnings(
+		value = { "EI_EXPOSE_REP", "EI_EXPOSE_REP2" },
+		justification = "Allow to set array values of form by Spring.")
 public class UserRegistForm implements Serializable {
 
 	private static final long serialVersionUID = 1L;

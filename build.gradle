@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'checkstyle'
+	id "com.github.spotbugs" version "4.7.10"
 }
 
 group = 'com.example.springboot'
@@ -36,6 +37,7 @@ dependencies {
 	runtimeOnly 'org.webjars:jquery:3.6.0'
 	runtimeOnly 'org.webjars:jquery-ui:1.12.1'
 	runtimeOnly 'org.webjars:bootstrap:4.6.0'
+	compileOnly 'com.github.spotbugs:spotbugs:4.5.0'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -49,11 +51,31 @@ test {
 
 /*
  * CheckStyle plugin.
- * task: gradle check
+ * task: checkstyleMain,checkstyleTest,check,...
  * config: ./config/checkstyle/checkstyle.xml
- * report: ./build/reports/checkstyle
+ * report: ./build/reports/checkstyle (default)
  * reference: https://docs.gradle.org/current/dsl/org.gradle.api.plugins.quality.CheckstyleExtension.html
  */
 checkstyle {
 	toolVersion = '9.1'
+}
+
+/*
+ * SpotBugs plugin.
+ * task: spotbugsMain,spotbugsTest,check,...
+ * report: ./build/reports/spotbugs (default)
+ * reference: https://github.com/spotbugs/spotbugs-gradle-plugin
+ */
+spotbugs {
+	toolVersion = '4.5.0'
+}
+
+spotbugsMain {
+	reports {
+		html {
+			enabled = true
+			destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+			stylesheet = 'fancy-hist.xsl'
+		}
+	}
 }
