@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring.domain.repository.TScheduledTaskHistoryMapper">
+  <insert id="create" parameterType="com.example.spring.domain.entity.TScheduledTaskHistory">
+    INSERT INTO t_scheduledtask_history (
+      method, message, created_date, modified_date
+    ) VALUES (
+      #{method}, #{message}, #{createdDate}, #{modifiedDate}
+    )
+  </insert>
+
+  <select id="findAllOrderById" resultType="com.example.spring.domain.entity.TScheduledTaskHistory">
+    SELECT
+      id, method, message, created_date, modified_date
+    FROM
+      t_scheduledtask_history
+    ORDER BY
+      id
+  </select>
+</mapper>

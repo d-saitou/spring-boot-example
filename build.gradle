@@ -6,7 +6,7 @@ plugins {
 	id "com.github.spotbugs" version "4.7.10"
 }
 
-group = 'com.example.springboot'
+group = 'com.example.spring'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
