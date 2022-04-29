@@ -2,9 +2,11 @@ package com.example.springboot.domain.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import com.example.springboot.domain.entity.base.AbstractBaseEntity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -12,7 +14,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class MUser implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class MUser extends AbstractBaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -53,7 +56,5 @@ public class MUser implements Serializable {
 	private boolean readonly;
 
 	private boolean enabled;
-
-	private LocalDateTime updateDate;
 
 }

@@ -2,43 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot.domain.repository.TTaskMapper">
 
-  <select id="findByIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+  <select id="findByTaskIdEquals" resultType="com.example.springboot.domain.entity.TTask">
     SELECT
-      id, title, schedule_date, status, description, user_id
+      task_id, title, scheduled_date, completion, description, created_by, created_date, modified_by, modified_date
     FROM
       t_task
     WHERE
-      id = #{id}
+      task_id = #{taskId}
   </select>
 
-  <sql id="userIdEquals">
+  <sql id="createdByEquals">
     <where>
-      user_id = #{userId}
+      created_by = #{createdBy}
     </where>
   </sql>
 
-  <select id="findByUserIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+  <select id="findByCreatedByEquals" resultType="com.example.springboot.domain.entity.TTask">
     SELECT
-      id, title, schedule_date, status, description, user_id
+      task_id, title, scheduled_date, completion, description, created_by, created_date, modified_by, modified_date
     FROM
       t_task
-    <include refid="userIdEquals"/>
+    <include refid="createdByEquals"/>
     ORDER BY
-      id
+      task_id
   </select>
 
-  <select id="countByUserIdEquals" resultType="int">
-    SELECT COUNT(*) FROM t_task <include refid="userIdEquals"/>
+  <select id="countByCreatedByEquals" resultType="int">
+    SELECT COUNT(*) FROM t_task <include refid="createdByEquals"/>
   </select>
 
-  <select id="findPageByUserIdEquals" resultType="com.example.springboot.domain.entity.TTask">
+  <select id="findPageByCreatedByEquals" resultType="com.example.springboot.domain.entity.TTask">
     SELECT
-      id, title, schedule_date, status, description, user_id
+      task_id, title, scheduled_date, completion, description, created_by, created_date, modified_by, modified_date
     FROM
       t_task
-    <include refid="userIdEquals"/>
+    <include refid="createdByEquals"/>
     ORDER BY
-      id
+      task_id
     LIMIT
       #{size}
     OFFSET
@@ -46,16 +46,22 @@
   </select>
 
   <!-- insert
-  <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.springboot.domain.entity.TTask">
-    INSERT INTO t_task (title, schedule_date, status, description, user_id) VALUES (#{title}, #{scheduleDate}, #{status}, #{description}, #{userId})
+  <insert id="create" useGeneratedKeys="true" keyProperty="taskId" parameterType="com.example.springboot.domain.entity.TTask">
+    INSERT INTO t_task (
+      title, scheduled_date, completion, description, created_by, created_date, modified_by, modified_date
+    ) VALUES (
+      #{title}, #{scheduledDate}, #{completion}, #{description}, #{createdBy}, #{createdDate}, #{modifiedBy}, #{modifiedDate}
+    )
   </insert>
   -->
 
   <!-- bulk insert -->
-  <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
-    INSERT INTO t_task (title, schedule_date, status, description, user_id) VALUES
+  <insert id="create" useGeneratedKeys="true" keyProperty="taskId" parameterType="java.util.List">
+    INSERT INTO t_task (
+      title, scheduled_date, completion, description, created_by, created_date, modified_by, modified_date
+    ) VALUES
     <foreach collection="entities" item="item" separator=",">
-      (#{item.title}, #{item.scheduleDate}, #{item.status}, #{item.description}, #{item.userId})
+      (#{item.title}, #{item.scheduledDate}, #{item.completion}, #{item.description}, #{item.createdBy}, #{item.createdDate}, #{item.modifiedBy}, #{item.modifiedDate})
     </foreach>
   </insert>
 
@@ -65,35 +71,39 @@
       t_task
     SET
       title = ELT(
-        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
         <foreach collection="entities" item="item" separator=",">#{item.title}</foreach>
       ),
-      schedule_date = ELT(
-        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
-        <foreach collection="entities" item="item" separator=",">#{item.scheduleDate}</foreach>
+      scheduled_date = ELT(
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.scheduledDate}</foreach>
       ),
-      status = CAST(ELT(
-        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
-        <foreach collection="entities" item="item" separator=",">#{item.status}</foreach>
+      completion = CAST(ELT(
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.completion}</foreach>
       ) AS UNSIGNED),
       description = ELT(
-        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
         <foreach collection="entities" item="item" separator=",">#{item.description}</foreach>
       ),
-      user_id = ELT(
-        FIELD(id, <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>),
-        <foreach collection="entities" item="item" separator=",">#{item.userId}</foreach>
+      modified_by = ELT(
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.modifiedBy}</foreach>
+      ),
+      modified_date = ELT(
+        FIELD(task_id, <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>),
+        <foreach collection="entities" item="item" separator=",">#{item.modifiedDate}</foreach>
       )
     WHERE
-      id IN (
-        <foreach collection="entities" item="item" separator=",">#{item.id}</foreach>
+      task_id IN (
+        <foreach collection="entities" item="item" separator=",">#{item.taskId}</foreach>
       )
   </update>
 
   <!-- delete -->
   <delete id="delete" parameterType="List">
-    DELETE FROM t_task WHERE id IN (
-      <foreach item="id" collection="idList" separator=",">#{id}</foreach>
+    DELETE FROM t_task WHERE task_id IN (
+      <foreach item="taskId" collection="taskIdList" separator=",">#{taskId}</foreach>
     )
   </delete>
 

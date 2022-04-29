@@ -3,7 +3,10 @@ package com.example.springboot.domain.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.example.springboot.domain.entity.base.AbstractBaseEntity;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -11,20 +14,19 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class TTask implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class TTask extends AbstractBaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private Integer taskId;
 
 	private String title;
 
-	private LocalDate scheduleDate;
+	private LocalDate scheduledDate;
 
-	private Boolean status;
+	private Boolean completion;
 
 	private String description;
-
-	private String userId;
 
 }

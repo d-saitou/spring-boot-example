@@ -1,9 +1,11 @@
 package com.example.springboot.domain.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+
+import com.example.springboot.domain.entity.base.AbstractBaseDateOnlyEntity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -11,7 +13,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class TScheduledTaskHistory implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class TScheduledTaskHistory extends AbstractBaseDateOnlyEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +23,5 @@ public class TScheduledTaskHistory implements Serializable {
 	private String method;
 
 	private String message;
-
-	private LocalDateTime updateDate;
 
 }

@@ -15,34 +15,34 @@ public interface TTaskMapper {
 
 	/**
 	 * Select by task id.
-	 * @param id task id.
+	 * @param taskId task id.
 	 * @return TTask entity.
 	 */
-	TTask findByIdEquals(@Param("id") Integer id);
+	TTask findByTaskIdEquals(@Param("taskId") Integer taskId);
 
 	/**
 	 * Select by user id.
-	 * @param userId user id.
+	 * @param createdBy user id.
 	 * @return TTask entities.
 	 */
-	List<TTask> findByUserIdEquals(@Param("userId") String userId);
+	List<TTask> findByCreatedByEquals(@Param("createdBy") String createdBy);
 
 	/**
 	 * Select by user id and count after pagination.
-	 * @param userId user id.
+	 * @param createdBy user id.
 	 * @return record count after pagnation.
 	 */
-	int countByUserIdEquals(@Param("userId") String userId);
+	int countByCreatedByEquals(@Param("createdBy") String createdBy);
 
 	/**
 	 * Select by user id and pagination.
-	 * @param userId user id.
-	 * @param size   number of content data per page.
-	 * @param offset number of start records for pagenation.
+	 * @param createdBy user id.
+	 * @param size      number of content data per page.
+	 * @param offset    number of start records for pagenation.
 	 * @return TTask entities.
 	 */
-	List<TTask> findPageByUserIdEquals(
-			@Param("userId") String userId, @Param("size") int size, @Param("offset") int offset);
+	List<TTask> findPageByCreatedByEquals(
+			@Param("createdBy") String createdBy, @Param("size") int size, @Param("offset") int offset);
 
 	/**
 	 * Insert.
@@ -58,9 +58,9 @@ public interface TTaskMapper {
 
 	/**
 	 * Delete.
-	 * @param id task id.
+	 * @param taskIdList task id.
 	 * @return Number of deleted records.
 	 */
-	int delete(@Param("idList") List<Integer> id);
+	int delete(@Param("taskIdList") List<Integer> taskIdList);
 
 }

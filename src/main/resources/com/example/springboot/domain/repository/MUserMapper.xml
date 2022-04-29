@@ -3,14 +3,14 @@
 <mapper namespace="com.example.springboot.domain.repository.MUserMapper">
   <insert id="create" parameterType="com.example.springboot.domain.entity.MUser">
     INSERT INTO m_user (
-      user_id, user_name, password, email_address_1, email_address_2, gender, nationality_1, nationality_2, date_of_birth, address, credit_card_no, credit_card_expiration_date, password_hint, password_hint_answer, session_timeout, email_newsletter_1, email_newsletter_2, readonly, enabled, update_date
+      user_id, user_name, password, email_address_1, email_address_2, gender, nationality_1, nationality_2, date_of_birth, address, credit_card_no, credit_card_expiration_date, password_hint, password_hint_answer, session_timeout, email_newsletter_1, email_newsletter_2, readonly, enabled, created_by, created_date, modified_by, modified_date
     ) VALUES (
-      #{userId}, #{userName}, #{password}, #{emailAddress1}, #{emailAddress2}, #{gender}, #{nationality1}, #{nationality2}, #{dateOfBirth}, #{address}, #{creditCardNo}, #{creditCardExpirationDate}, #{passwordHint}, #{passwordHintAnswer}, #{sessionTimeout}, #{emailNewsletter1}, #{emailNewsletter2}, #{readonly}, #{enabled}, now()
+      #{userId}, #{userName}, #{password}, #{emailAddress1}, #{emailAddress2}, #{gender}, #{nationality1}, #{nationality2}, #{dateOfBirth}, #{address}, #{creditCardNo}, #{creditCardExpirationDate}, #{passwordHint}, #{passwordHintAnswer}, #{sessionTimeout}, #{emailNewsletter1}, #{emailNewsletter2}, #{readonly}, #{enabled}, #{createdBy}, #{createdDate}, #{modifiedBy}, #{modifiedDate}
     )
   </insert>
 
-  <update id="setEnabledByUserId" parameterType="com.example.springboot.domain.entity.MUser">
-    UPDATE m_user SET enabled = #{enabled} WHERE user_id = #{userId}
+  <update id="updateEnabledByUserId" parameterType="com.example.springboot.domain.entity.MUser">
+    UPDATE m_user SET enabled = #{enabled}, modified_by = #{modifiedBy}, modified_date = #{modifiedDate} WHERE user_id = #{userId}
   </update>
 
   <delete id="deleteByUserId" parameterType="String">
@@ -38,7 +38,10 @@
       email_newsletter_2,
       readonly,
       enabled,
-      update_date
+      created_by,
+      created_date,
+      modified_by,
+      modified_date
     FROM
       m_user
     WHERE
@@ -66,7 +69,10 @@
       email_newsletter_2,
       readonly,
       enabled,
-      update_date
+      created_by,
+      created_date,
+      modified_by,
+      modified_date
     FROM
       m_user
     ORDER BY

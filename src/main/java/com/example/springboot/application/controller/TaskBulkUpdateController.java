@@ -87,7 +87,7 @@ public class TaskBulkUpdateController extends TaskListController {
 					updateTasks.add(super.helper.convertFormToEntity(task, locale));
 				}
 				if (task.isDeleteFlg()) {
-					deleteTasks.add(task.getId());
+					deleteTasks.add(task.getTaskId());
 				}
 			}
 			// update and delete tasks

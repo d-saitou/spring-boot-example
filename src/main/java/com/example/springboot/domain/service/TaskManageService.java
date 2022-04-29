@@ -24,11 +24,11 @@ public class TaskManageService {
 
 	/**
 	 * Get pagination tasks by user ID.
-	 * @param id task id.
+	 * @param taskId task id.
 	 * @return TTask entity.
 	 */
-	public TTask txGetTaskById(Integer id) {
-		return repo.findByIdEquals(id);
+	public TTask txGetTaskByTaskId(Integer taskId) {
+		return repo.findByTaskIdEquals(taskId);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class TaskManageService {
 	 * @return TTask entities.
 	 */
 	public List<TTask> txGetTaskByUserid(String userId) {
-		return repo.findByUserIdEquals(userId);
+		return repo.findByCreatedByEquals(userId);
 	}
 
 	/**
@@ -49,8 +49,8 @@ public class TaskManageService {
 	 */
 	public Page<TTask> txGetTaskPagingListByUserid(String userId, int pageSize, int currentPage) {
 		int offset = pageSize * currentPage;
-		int count = repo.countByUserIdEquals(userId);
-		List<TTask> content = repo.findPageByUserIdEquals(userId, pageSize, offset);
+		int count = repo.countByCreatedByEquals(userId);
+		List<TTask> content = repo.findPageByCreatedByEquals(userId, pageSize, offset);
 		return new Page<TTask>(pageSize, currentPage, count, content);
 	}
 
@@ -76,11 +76,11 @@ public class TaskManageService {
 
 	/**
 	 * Delete tasks.
-	 * @param idList task id list.
+	 * @param taskIdList task id list.
 	 */
-	public void txDeleteTasks(List<Integer> idList) {
-		if (idList.size() > 0) {
-			repo.delete(idList);
+	public void txDeleteTasks(List<Integer> taskIdList) {
+		if (taskIdList.size() > 0) {
+			repo.delete(taskIdList);
 		}
 	}
 

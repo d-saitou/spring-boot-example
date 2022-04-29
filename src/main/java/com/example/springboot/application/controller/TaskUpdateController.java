@@ -46,7 +46,7 @@ public class TaskUpdateController {
 	public String get(Model model, Locale locale,
 			@RequestParam(name = "page", required = false) String page,
 			@PathVariable(name = "id", required = false) Integer id) {
-		TTask task = service.txGetTaskById(id);
+		TTask task = service.txGetTaskByTaskId(id);
 		model.addAttribute("taskForm", helper.convertEntityToForm(task, locale));
 		model.addAttribute("page", page);
 		return "content/TaskUpdate";

@@ -39,12 +39,16 @@ public class UserManageService {
 	 * @param user user entity.
 	 */
 	public void txRegistUser(MUser user) {
+		user.setCreatedBy(user.getUserId());
+		user.setModifiedBy(user.getUserId());
 		userRepo.create(user);
 
 		// Register the role assigned to the user.
 		MUserRole userRole = new MUserRole();
 		userRole.setUserId(user.getUserId());
 		userRole.setRoleId(AppConstants.ROLE_ID_FOR_USERS);
+		userRole.setCreatedBy(user.getUserId());
+		userRole.setModifiedBy(user.getUserId());
 		userRoleRepo.create(userRole);
 	}
 
@@ -55,7 +59,7 @@ public class UserManageService {
 	public void txChangeEnableUser(Map<String, Boolean> userMap) {
 		for (Map.Entry<String, Boolean> entry : userMap.entrySet()) {
 			MUser e = new MUser().setUserId(entry.getKey()).setEnabled(entry.getValue());
-			userRepo.setEnabledByUserId(e);
+			userRepo.updateEnabledByUserId(e);
 		}
 	}
 

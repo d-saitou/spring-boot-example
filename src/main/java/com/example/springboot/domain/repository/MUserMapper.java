@@ -37,7 +37,7 @@ public interface MUserMapper {
 	 * @param entity MUser entity.
 	 * @return result.
 	 */
-	boolean setEnabledByUserId(MUser entity);
+	boolean updateEnabledByUserId(MUser entity);
 
 	/**
 	 * Delete by user id.

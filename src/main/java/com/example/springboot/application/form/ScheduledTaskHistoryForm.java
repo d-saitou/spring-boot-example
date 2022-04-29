@@ -19,6 +19,6 @@ public class ScheduledTaskHistoryForm implements Serializable {
 
 	private String message;
 
-	private LocalDateTime updatedate;
+	private LocalDateTime createdDate;
 
 }
