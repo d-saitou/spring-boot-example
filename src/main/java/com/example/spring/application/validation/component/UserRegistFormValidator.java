@@ -1,10 +1,10 @@
 package com.example.spring.application.validation.component;
 
-import com.example.spring.application.form.UserRegistForm;
-
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import com.example.spring.application.form.UserRegistForm;
 
 /**
  * Custom validator for user registration screen.

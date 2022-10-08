@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import com.example.spring.config.AppConstants;
-
 import org.slf4j.MDC;
+
+import com.example.spring.config.AppConstants;
 
 /**
  * Filter that puts the request IP address to MDC.

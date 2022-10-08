@@ -3,10 +3,10 @@ package com.example.spring.config.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.spring.config.AppConstants;
-
 import org.slf4j.MDC;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
+
+import com.example.spring.config.AppConstants;
 
 /**
  * Interceptor that puts the login user to MDC.

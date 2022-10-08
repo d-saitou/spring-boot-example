@@ -1,10 +1,10 @@
 package com.example.spring.config.application;
 
-import com.example.spring.config.filter.LogMDCPutFilter;
-
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.example.spring.config.filter.LogMDCPutFilter;
 
 /**
  * Configure the filter.

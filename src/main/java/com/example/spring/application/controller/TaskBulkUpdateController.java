@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import com.example.spring.application.form.TaskForm;
-import com.example.spring.application.form.TaskPageForm;
-import com.example.spring.application.helper.TaskListHelper;
-import com.example.spring.config.AppProperties;
-import com.example.spring.config.security.UserDetailsImpl;
-import com.example.spring.domain.entity.TTask;
-import com.example.spring.domain.service.TaskManageService;
-
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.spring.application.form.TaskForm;
+import com.example.spring.application.form.TaskPageForm;
+import com.example.spring.application.helper.TaskListHelper;
+import com.example.spring.config.AppProperties;
+import com.example.spring.config.security.UserDetailsImpl;
+import com.example.spring.domain.entity.TTask;
+import com.example.spring.domain.service.TaskManageService;
 
 /**
  * Task bulk update screen controller.

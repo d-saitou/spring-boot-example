@@ -3,16 +3,16 @@ package com.example.spring.application.controller;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.spring.application.form.TaskForm;
 import com.example.spring.application.helper.TaskListHelper;
 import com.example.spring.config.security.UserDetailsImpl;
 import com.example.spring.domain.entity.TTask;
 import com.example.spring.domain.service.TaskManageService;
-
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -2,9 +2,9 @@ package com.example.spring.domain.repository;
 
 import java.util.List;
 
-import com.example.spring.domain.entity.VUserAuthority;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.spring.domain.entity.VUserAuthority;
 
 /**
  * MyBatis repository (view: v_user_authority).

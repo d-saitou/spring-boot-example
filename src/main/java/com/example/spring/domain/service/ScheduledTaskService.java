@@ -2,10 +2,10 @@ package com.example.spring.domain.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.spring.domain.entity.TScheduledTaskHistory;
 import com.example.spring.domain.repository.TScheduledTaskHistoryMapper;
-
-import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

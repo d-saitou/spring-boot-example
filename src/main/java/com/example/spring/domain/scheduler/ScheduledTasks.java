@@ -1,10 +1,10 @@
 package com.example.spring.domain.scheduler;
 
-import com.example.spring.config.AppProperties;
-import com.example.spring.domain.service.ScheduledTaskService;
-
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import com.example.spring.config.AppProperties;
+import com.example.spring.domain.service.ScheduledTaskService;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;

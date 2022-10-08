@@ -1,11 +1,11 @@
 package com.example.spring.application.validation.component;
 
-import com.example.spring.application.form.FileUploadForm;
-
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.spring.application.form.FileUploadForm;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 

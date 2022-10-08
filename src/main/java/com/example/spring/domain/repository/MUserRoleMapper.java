@@ -1,8 +1,8 @@
 package com.example.spring.domain.repository;
 
-import com.example.spring.domain.entity.MUserRole;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.spring.domain.entity.MUserRole;
 
 /**
  * MyBatis repository (table: m_user_role).

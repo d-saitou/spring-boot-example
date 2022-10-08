@@ -2,6 +2,12 @@ package com.example.spring.application.controller;
 
 import java.util.Locale;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.example.spring.application.form.TaskPageForm;
 import com.example.spring.application.helper.TaskListHelper;
 import com.example.spring.config.AppProperties;
@@ -9,12 +15,6 @@ import com.example.spring.config.security.UserDetailsImpl;
 import com.example.spring.domain.entity.TTask;
 import com.example.spring.domain.helper.Page;
 import com.example.spring.domain.service.TaskManageService;
-
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;

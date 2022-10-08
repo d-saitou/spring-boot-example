@@ -11,9 +11,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import com.example.spring.application.validation.annotation.DateFormatCheckForString;
-
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.spring.application.validation.annotation.DateFormatCheckForString;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Data;

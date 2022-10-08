@@ -4,8 +4,6 @@ import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.spring.utility.StringUtility;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -15,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
+
+import com.example.spring.utility.StringUtility;
 
 /**
  * Aspect component that sets audit properties for database entities.

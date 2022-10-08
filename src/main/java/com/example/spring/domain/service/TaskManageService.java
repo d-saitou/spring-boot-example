@@ -2,11 +2,11 @@ package com.example.spring.domain.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.spring.domain.entity.TTask;
 import com.example.spring.domain.helper.Page;
 import com.example.spring.domain.repository.TTaskMapper;
-
-import org.springframework.stereotype.Service;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;

@@ -2,8 +2,6 @@ package com.example.spring.config.application;
 
 import java.util.Collections;
 
-import com.example.spring.config.AppConstants;
-
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -15,6 +13,8 @@ import org.springframework.transaction.interceptor.NameMatchTransactionAttribute
 import org.springframework.transaction.interceptor.RollbackRuleAttribute;
 import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
+
+import com.example.spring.config.AppConstants;
 
 import lombok.RequiredArgsConstructor;
 

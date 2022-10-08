@@ -2,9 +2,9 @@ package com.example.spring.domain.repository;
 
 import java.util.List;
 
-import com.example.spring.domain.entity.MUser;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.spring.domain.entity.MUser;
 
 /**
  * MyBatis repository (table: m_user).

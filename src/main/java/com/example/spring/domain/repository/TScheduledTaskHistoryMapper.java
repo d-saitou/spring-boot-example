@@ -2,9 +2,9 @@ package com.example.spring.domain.repository;
 
 import java.util.List;
 
-import com.example.spring.domain.entity.TScheduledTaskHistory;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.spring.domain.entity.TScheduledTaskHistory;
 
 /**
  * MyBatis repository (view: t_scheduledtask_history).

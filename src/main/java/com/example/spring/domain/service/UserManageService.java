@@ -3,13 +3,13 @@ package com.example.spring.domain.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.example.spring.config.AppConstants;
 import com.example.spring.domain.entity.MUser;
 import com.example.spring.domain.entity.MUserRole;
 import com.example.spring.domain.repository.MUserMapper;
 import com.example.spring.domain.repository.MUserRoleMapper;
-
-import org.springframework.stereotype.Service;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;

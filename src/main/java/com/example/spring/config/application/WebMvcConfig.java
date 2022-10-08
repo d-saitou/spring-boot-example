@@ -1,9 +1,5 @@
 package com.example.spring.config.application;
 
-import com.example.spring.config.interceptor.AppCallableProcessingInterceptor;
-import com.example.spring.config.interceptor.AppDeferredResultProcessingInterceptor;
-import com.example.spring.config.interceptor.LogMDCPutInterceptor;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.AsyncTaskExecutor;
@@ -13,6 +9,10 @@ import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.example.spring.config.interceptor.AppCallableProcessingInterceptor;
+import com.example.spring.config.interceptor.AppDeferredResultProcessingInterceptor;
+import com.example.spring.config.interceptor.LogMDCPutInterceptor;
 
 import lombok.RequiredArgsConstructor;
 

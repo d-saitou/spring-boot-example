@@ -8,11 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
-import com.example.spring.config.AppProperties;
-import com.example.spring.domain.entity.TTask;
-import com.example.spring.domain.repository.TTaskMapper;
-import com.example.spring.utility.FileUtility;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,6 +15,11 @@ import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
+
+import com.example.spring.config.AppProperties;
+import com.example.spring.domain.entity.TTask;
+import com.example.spring.domain.repository.TTaskMapper;
+import com.example.spring.utility.FileUtility;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
@@ -105,11 +105,13 @@ public class TaskExcelManageService {
 			throw e;
 		} finally {
 			try {
-				fileOut.close();
+				if (fileOut != null)
+					fileOut.close();
 			} catch (Exception expected) {
 			}
 			try {
-				wb.close();
+				if (wb != null)
+					wb.close();
 			} catch (Exception expected) {
 			}
 		}
